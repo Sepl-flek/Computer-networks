@@ -40,7 +40,17 @@ int main() {
         if (received == SOCKET_ERROR) continue;
 
         buffer[received] = '\0';
-        std::cout << "Received: " << buffer << std::endl;
+        char client_ip[INET_ADDRSTRLEN];
+        inet_ntop(AF_INET, &clientAddr.sin_addr, client_ip, sizeof(client_ip));
+        int client_port = ntohs(clientAddr.sin_port);
+
+        std::cout << "Received from "
+          << client_ip
+          << ":"
+          << ntohs(clientAddr.sin_port)
+          << " -> "
+          << buffer
+          << std::endl;
 
         sendto(
             sock,
