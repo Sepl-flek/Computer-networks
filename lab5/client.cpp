@@ -8,7 +8,7 @@
 #include <pthread.h>
 #include <csignal>
 #include <string>
-#include "messages.h"
+#include "message.h"
 
 #define SERVER_PORT 8080
 #define SERVER_IP "127.0.0.1"
